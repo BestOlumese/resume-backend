@@ -18,6 +18,7 @@ router.post("/upload-image", upload.single("image"), (req, res) => {
         const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
         res.status(200).json({ imageUrl });
     } catch (error) {
+        console.error("Upload error: ", error);
         res.status(500).json({ error: error });
     }
 })
